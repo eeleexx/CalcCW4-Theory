@@ -1,0 +1,410 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\title{We snortin' fart bubbles}
+
+\begin{document}
+
+\maketitle
+
+\section*{Lecture 25 (09.04.2024)}
+
+\subsection*{Theorem 1: Bolzano-Weierstrass Theorem for Sequences of Points in $\mathbb{R}^2$}
+
+\begin{theorem}
+Every bounded sequence of points in $\mathbb{R}^2$ has at least one limit point.
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Let $\{P_n = (x_n, y_n)\}$ be a bounded sequence of points. Then there is a constant $M$ such that for any $n$
+\[
+\sqrt{x_n^2 + y_n^2} < M.
+\]
+So, $|x_n| < M$ and $|y_n| < M$ for any $n$, and by the Bolzano-Weierstrass theorem for sequences of real numbers, there exists a subsequence $\{x_{n_k}\}$ of sequence $\{x_n\}$ that is convergent to some number $a$. Subsequence $\{y_{n_k}\}$ is also bounded by $M$. So, applying the Bolzano-Weierstrass theorem again we can conclude that there is a subsequence $\{y_{n_{k'}}\}$ of $\{y_{n_k}\}$ that is convergent to some number $b$. So, sequence of points $\{(x_{n_{k'}}, y_{n_{k'}})\}$ converges to $(a, b)$. The point $(a, b)$ is a limit point.
+
+\subsection*{Theorem 2: Bolzano-Weierstrass Theorem for Sets in $\mathbb{R}^2$}
+
+\begin{theorem}
+Every bounded infinite set of points in $\mathbb{R}^2$ has at least one limit point.
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Let $G$ be a bounded infinite set of points in $\mathbb{R}^2$. Then there exists a sequence $P_n \in G$ such that $P_n \neq P_m$ for $m \neq n$. According to theorem 1, $\{P_n\}$ has a limit point $Q$ that is a limit point of $G$.
+
+\section*{Lecture 26 (16.04.2024)}
+
+\subsection*{Theorem 1}
+
+\begin{theorem}
+If a function $f(x, y)$ is differentiable at the point $(x_0, y_0)$ then it is continuous at this point.
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Indeed, by definition 2, at $U$ function $f(x, y)$ can be presented in the form
+\[
+f(x, y) = f(x_0, y_0) + f'_x (x_0, y_0)\Delta x + f'_y (x_0, y_0)\Delta y + \varepsilon \cdot \rho.
+\]
+As $f'_x (x_0, y_0)$ and $f'_y (x_0, y_0)$ are finite numbers and $\Delta x$, $\Delta y$, $\varepsilon$ and $\rho$ tend to 0 as $(x, y) \to (x_0, y_0)$,
+\[
+\lim_{(x, y) \to (x_0, y_0)} f(x, y) = f(x_0, y_0).
+\]
+So, theorem is proved.
+
+\subsection*{Theorem 2}
+
+\begin{theorem}
+Let $f(x, y)$ be defined in an open set $G$ and partial derivatives $f'_x(x, y)$ and $f'_y(x, y)$ exist and are continuous in $G$. Then function $f(x, y)$ is differentiable at each point of $G$.
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Let $(x_0, y_0)$ be any point of $G$. We can rewrite $\Delta f$ in the form
+\[
+\Delta f = f(x, y) - f(x_0, y_0) = [f(x, y) - f(x, y_0)] + [f(x, y_0) - f(x_0, y_0)].
+\]
+Considering expressions in square brackets as functions of one variables we can apply Lagrange formula
+\[
+f(x, y) - f(x, y_0) = f'_y(x, b)\Delta y,
+\]
+\[
+f(x, y_0) - f(x_0, y_0) = f'_x(a, y_0)\Delta x
+\]
+for some $b$ between $y$ and $y_0$ and $a$ between $x$ and $x_0$.
+
+We get
+\begin{align*}
+\Delta f &= f'_x (a, y_0)\Delta x + f'_y (x, b)\Delta y \\
+&= \left(f'_x (x_0, y_0) + (f'_x (a, y_0) - f'_x (x_0, y_0))\right)\Delta x \\
+&\quad + \left(f'_y (x_0, y_0) + (f'_y (x, b) - f'_y (x_0, y_0))\right)\Delta y.
+\end{align*}
+
+The last two terms can be rewritten in the form
+\[
+\alpha \Delta x + \beta \Delta y = \left(\alpha \frac{\Delta x}{\sqrt{(\Delta x)^2 + (\Delta y)^2}} + \beta \frac{\Delta y}{\sqrt{(\Delta x)^2 + (\Delta y)^2}}\right)\rho.
+\]
+Applying the continuity of partial derivatives we obtain that $\alpha$, $\beta \to 0$ as $\Delta x, \Delta y \to 0$. So, $\varepsilon \to 0$ and $f(x, y)$ is differentiable at $(x_0, y_0)$.
+
+\subsection*{Theorem 3}
+
+\begin{theorem}
+Let $f(x, y)$ be differentiable at $(x_0, y_0)$, and $x = x(t)$, $y = y(t)$ are differentiable functions at $t = t_0$, then $F(t) = f(x(t), y(t))$ is differentiable at $t = t_0$ and
+\[
+F'(t_0) = f'_x (x_0, y_0)x'(t_0) + f'_y (x_0, y_0)y'(t_0).
+\]
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} As $f(x, y)$ is differential at $(x_0, y_0)$
+\[
+f(x, y) - f(x_0, y_0) = f'_x (x_0, y_0) \Delta x + f'_y (x_0, y_0) \Delta y + \varepsilon \cdot \rho,
+\]
+where $\varepsilon = \varepsilon (\Delta x, \Delta y) \to 0$ as $\Delta x, \Delta y \to 0$ and $\rho = \sqrt{(\Delta x)^2 + (\Delta y)^2}$.
+
+The last formula can be rewritten in the form
+\[
+f(x(t), y(t)) - f(x(t_0), y(t_0)) = f'_x (x_0, y_0) (x(t) - x(t_0)) + f'_y (x_0, y_0) (y(t) - y(t_0)) + \varepsilon \cdot \rho,
+\]
+\[
+F(t) - F(t_0) = f'_x (x_0, y_0) (x(t) - x(t_0)) + f'_y (x_0, y_0) (y(t) - y(t_0)) + \varepsilon \cdot \rho.
+\]
+Dividing by $\Delta t = t - t_0$, we have
+\[
+\frac{F(t) - F(t_0)}{
+\Delta t} = f'_x (x_0, y_0) \frac{x(t) - x(t_0)}{\Delta t} + f'_y (x_0, y_0) \frac{y(t) - y(t_0)}{\Delta t} + \varepsilon \cdot \sqrt{\left(\frac{\Delta x}{\Delta t}\right)^2 + \left(\frac{\Delta y}{\Delta t}\right)^2}.
+\]
+Taking the limit $\Delta t \to 0$, as $\Delta x, \Delta y \to 0$ while $\Delta t \to 0$, we get
+\[
+F'(t_0) = f'_x (x_0, y_0)x'(t_0) + f'_y (x_0, y_0)y'(t_0).
+\]
+
+\section*{Lecture 27 (23.04.2024)}
+
+\subsection*{Theorem 1}
+
+\begin{theorem}
+Let $f(x)$ be a function having continuous first derivatives in a neighborhood of a point $a$ and $v \in \mathbb{R}^n$, $|v| = 1$. Then $\frac{\partial f}{\partial v}(a)$ exists and
+\[
+\frac{\partial f}{\partial v}(a) = v_1 \frac{\partial f}{\partial x_1}(a) + v_2 \frac{\partial f}{\partial x_2}(a) + \dots + v_n \frac{\partial f}{\partial x_n}(a) = \sum_{i=1}^{n} v_i \frac{\partial f}{\partial x_i}(a).
+\]
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Let us consider the function $F(t) = f(a + vt) = f(a_1 + v_1 t, a_2 + v_2 t, \dots, a_n + v_n t)$. By definition,
+\[
+F'(0) = \lim_{t \to 0} \frac{F(t) - F(0)}{t} = \lim_{t \to 0} \frac{f(a + vt) - f(a)}{t} = \frac{\partial f}{\partial v}(a).
+\]
+On the other hand, by derivative of the composition,
+\[
+F'(t) = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}(a + vt) \frac{dx_i}{dt} = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}(a + vt) v_i.
+\]
+and
+\[
+F'(0) = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}(a) v_i.
+\]
+Comparing these, we get the proof of the theorem.
+
+\subsection*{Theorem 2}
+
+\begin{theorem}
+The gradient vector $\nabla F$ at $P \subset S$ is perpendicular to the tangent vector to any curve $\gamma$ on $S$ that passes through $P$. In other words, the gradient vector $\nabla F$ at $P \subset S$ is orthogonal to the surface $F(x, y, z) = 0$ at point $P$.
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Suppose that $S$ is a surface with equation $F(x, y, z) = 0$, that is, it is a level surface of a function $F$ of three variables, and let $P \in S$ be a point on $S$. Let $\gamma$ be any curve that lies on the surface $S$ and passes through the point $P$. The curve $\gamma$ is described by a continuous vector function $r(t) = (x(t), y(t), z(t))$. Let $t$ be the fixed parameter value corresponding to $P$, that is, $r(t) = P$. Since $\gamma \subset S$, any point of $r(t)$ must satisfy the equation of $S$, that is,
+\[
+F(x(t), y(t), z(t)) = 0,
+\]
+so that $\frac{d}{dt}F(x(t), y(t), z(t)) = 0$. On the other hand, from the derivative of a composition we have that
+\[
+\frac{\partial F}{\partial x} x'(t) + \frac{\partial F}{\partial y} y'(t) + \frac{\partial F}{\partial z} z'(t) = 0.
+\]
+We have that
+\[
+(\nabla F(P), r'(t)) = 0.
+\]
+\section*{Lecture 28 (27.04.2024)}
+
+\subsection*{Theorem 1}
+
+\begin{theorem}
+If partial derivatives $f'_x(x, y)$, $f'_y(x, y)$, $f''_{xy}(x, y)$ and $f''_{yx}(x, y)$ are defined at a neighborhood of $(x_0, y_0)$ and continuous at $(x_0, y_0)$ then
+\[
+f''_{xy}(x_0, y_0) = f''_{yx}(x_0, y_0).
+\]
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Let us consider a function
+\[
+\Delta = [f (x, y) - f (x, y_0)] - [f (x_0, y) - f (x_0, y_0)]
+\]
+and $\varphi(x) = f (x, y) - f (x, y_0)$. Then
+\[
+\Delta = \varphi(x) - \varphi(x_0)
+\]
+and, applying Lagrange theorem to $\varphi(x)$ we have that for some point $\xi$ from the interval between points $x$ and $x_0$
+\[
+\Delta = \varphi'(\xi)\Delta x, \quad \Delta x = x - x_0.
+\]
+So,
+\[
+\Delta = [f'_x (\xi, y) - f'_x (\xi, y_0)]\Delta x.
+\]
+Applying the Lagrange theorem to function of $y$ (in square brackets), we get for some point $\eta$ from the interval between point $y$ and $y_0$ with $\Delta y = y - y_0$ the following presentation
+\[
+\Delta = f''_{xy}(\xi, \eta)\Delta x \Delta y. \quad (1)
+\]
+
+Let us present now the function $\Delta$ in the form
+\[
+\Delta = [f (x, y) - f (x_0, y)] - [f (x, y_0) - f (x_0, y_0)]
+\]
+and introduce the function $\psi(y) = f (x, y) - f (x_0, y)$. So,
+\[
+\Delta = \psi(y) - \psi(y_0).
+\]
+Applying the Lagrange theorem to $\psi(y)$ we have that for some point $\beta$ from the interval between points $y$ and $y_0$
+\[
+\Delta = \psi'(\beta)\Delta y, \quad \Delta y = y - y_0
+\]
+and
+\[
+\Delta = [f'_y (x, \beta) - f'_y (x_0, \beta)]\Delta y.
+\]
+Applying the Lagrange theorem again to the function $f'_y (x, \beta)$ we obtain
+\[
+\Delta = f''_{yx}(\alpha, \beta)\Delta x \Delta y, \quad (2)
+\]
+where $\alpha$ belongs to the interval between $x$ and $x_0$. Comparing (1) and (2), we obtain
+\[
+f''_{xy}(\xi, \eta) = f''_{yx}(\alpha, \beta).
+\]
+Theorem follows from the continuity of partial derivatives at $(x_0, y_0)$ as $(\xi, \eta)$ and $(\alpha, \beta)$ tend to $(x_0, y_0)$ if $\Delta x, \Delta y \to 0$.
+
+\section*{Lecture 29 (30.04.2024)}
+
+\subsection*{Theorem 1}
+
+\begin{theorem}
+(Taylor formula for a function of two variables). If a point $M_1(x + \Delta x, y + \Delta y) \in B(x, y)$ then the increment $\Delta f = f(M_1) - f(M)$ can be presented in the form
+\begin{align*}
+\Delta f &= df(x, y) + \frac{d^2f(x, y)}{2!} + \dots + \frac{d^n f(x, y)}{n!} + \frac{d^{n+1}f(x + \theta \Delta x, y + \theta \Delta y)}{(n+1)!} \\
+         &= \sum_{k=1}^{n} \frac{d^k f(x, y)}{k!} + \frac{d^{n+1}f(x + \theta \Delta x, y + \theta \Delta y)}{(n+1)!}, \quad \theta \in [0, 1].
+\end{align*}
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Let us introduce the function $F(t) = f(x + t\Delta x, y + t\Delta y)$, $t \in [0, 1]$ and find its derivatives up to the $(n+1)$-th order
+\begin{align*}
+F'(t) &= f_x(x + t\Delta x, y + t\Delta y)\Delta x + f_y(x + t\Delta x, y + t\Delta y)\Delta y \\
+      &= \left(\Delta x \frac{\partial}{\partial x} + \Delta y \frac{\partial}{\partial y}\right) f(x + t\Delta x, y + t\Delta y).
+\end{align*}
+In the same way
+\begin{align*}
+F''(t) &= f_{xx}(x + t\Delta x, y + t\Delta y)(\Delta x)^2 + 2f_{xy}(x + t\Delta x, y + t\Delta y)\Delta x\Delta y \\
+       &\quad + f_{yy}(x + t\Delta x, y + t\Delta y)(\Delta y)^2 \\
+       &= \left(\Delta x \frac{\partial}{\partial x} + \Delta y \frac{\partial}{\partial y}\right)^2 f(x + t\Delta x, y + t\Delta y)
+\end{align*}
+and so on. In particular,
+\[
+F^{(k)}(t) = \left(\Delta x \frac{\partial}{\partial x} + \Delta y \frac{\partial}{\partial y}\right)^k f(x + t\Delta x, y + t\Delta y).
+\]
+Considering the point $t = 0$ we have
+\[
+F'(0) = \left(\Delta x \frac{\partial}{\partial x} + \Delta y \frac{\partial}{\partial y}\right) f(x, y) = df(x, y),
+\]
+\[
+F''(0) = \left(\Delta x \frac{\partial}{\partial x} + \Delta y \frac{\partial}{\partial y}\right)^2 f(x, y) = d^2f(x, y),
+\]
+\[
+\vdots
+\]
+\[
+F^{(k)}(0) = \left(\Delta x \frac{\partial}{\partial x} + \Delta y \frac{\partial}{\partial y}\right)^k f(x, y) = d^k f(x, y).
+\]
+
+On the other hand, we can use the Maclaurin formula for the function $F(t)$ with $\Delta t = 1$
+\[
+F(1) = F(0) + \frac{F'(0)}{1!} + \frac{F''(0)}{2!} + \dots + \frac{F^{(n)}(0)}{n!} + \frac{F^{(n+1)}(\theta)}{(n+1)!}.
+\]
+
+So, as $F(1) = f(M_1)$, $F(0) = f(M)$, substituting formulas for $F'(0)$, $F''(0)$, $\dots$, $F^{(k)}(0)$ we have the formulation of the theorem.
+
+\section*{Lecture 31 (25.05.2024)}
+
+\subsection*{Theorem 1}
+
+\begin{theorem}
+Let $f(x)$ have first derivatives in a domain $D \subset \mathbb{R}^n$. If $f(x)$ has a local extremum at a point $a \in D$, then
+\[
+\nabla f(a) = 0, \quad \text{or} \quad \frac{\partial f}{\partial x_i}(a) = 0, \quad i = 1, \ldots, n.
+\]
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Let $a = (a_1, a_2, \ldots, a_n)$. Then functions of one variable
+\[
+\varphi_i(t) = f(a_1, \ldots, a_{i-1}, t, a_{i+1}, \ldots, a_n), \quad i = 1, \ldots, n
+\]
+have relative extremum at $t = a_i$. Hence $\varphi_i'(a_i) = 0$. That is,
+\[
+\frac{\partial f}{\partial x_i}(a) = 0, \quad i = 1, \ldots, n.
+\]
+Theorem follows.
+
+\subsection*{Theorem 3}
+
+\begin{theorem}
+Let $f(x)$ have continuous first and second derivatives in a domain $D \subset \mathbb{R}^n$. Then:
+\begin{enumerate}
+    \item If $a$ is a local minimum (maximum) of $u = f(x)$, then the quadratic form $Q_f(a)[v]$ defined by
+    \[
+    Q_f(x)[v] = \left( \nabla^2 f(x)v, v \right)
+    \]
+    is nonnegative (nonpositive) definite.
+    \item (Sufficient condition) Let $a$ be a critical point of $f$ in $D$. Then:
+    \begin{enumerate}
+        \item If $Q_f(a)[v]$ is positive definite, then $f$ has a relative minimum at $a$.
+        \item If $Q_f(a)[v]$ is negative definite, then $f$ has a relative maximum at $a$.
+        \item If $Q_f(a)[v]$ is indefinite, then $f$ has neither relative minimum nor relative maximum at $a$.
+    \end{enumerate}
+\end{enumerate}
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} 
+1. Let $a$ be a point of a local minimum of $f(x)$. Then, by definition, there exists a neighborhood $B_r(a)$, such that for any point $x \in B_r(a)$ we have that $f(x) \geq f(a)$. Also, for any $k \in \mathbb{R}$: $Q_f(x) [kv] = k^2 Q_f(x) [v]$. So, it is enough to prove the theorem for all $v \in \mathbb{R}^n$ such that $|v| < r$.
+
+Consider the function of one variable $\varphi(t) = f(a + tv)$ where $t \in [-1, 1]$. By definition of local minimum, $\varphi(t) \geq \varphi(0) = f(a)$ for $t \in [-1, 1]$ and $t = 0$ is a point of a local minimum of $\varphi$ at $[-1, 1]$. So, $\varphi'(0) = 0$ and $\varphi''(0) \geq 0$. By the derivative of composition,
+\[
+\varphi'(t) = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}(a + tv)v_i,
+\]
+\[
+\varphi''(t) = \sum_{i,j=1}^{n} \frac{\partial^2 f}{\partial x_i \partial x_j}(a + tv)v_i v_j = Q_f(a + tv) [v],
+\]
+so, for $t = 0$,
+\[
+Q_f(a) [v] = \varphi''(0) \geq 0.
+\]
+Part 1 of the theorem is proved.
+
+2. Let $a$ be a critical point of $u = f(x)$ and $Q_f(a)[v]$ is positive definite. Then there exists a neighborhood $B_r(a)$ such that for any $x \in B_r(a)$ the quadratic form $Q_f(x)[v]$ is also positive definite. Let us fix $x \in B_r(a)$ and consider $v = x - a$. If $\varphi(t) = f(a + tv)$, then $\varphi(1) = f(x)$, $\varphi(0) = f(a)$ and
+\[
+\varphi'(0) = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}(a)v_i = 0,
+\]
+as $a is a critical point. We obtain
+\[
+f(x) = f(a + v) = \varphi(1) = \varphi(0) + \varphi(1) - \varphi(0) = f(a) + \int_0^1 \varphi'(t) \, dt = f(a) + \int_0^1 (\varphi'(t) - \varphi'(0)) \, dt = f(a) + \int_0^1 \left( \int_0^t \varphi''(\tau) \, d\tau \right) \, dt = f(a) + \int_0^1 \left( \int_0^t Q_f(a + \tau v)[v] \, d\tau \right) \, dt \geq f(a).
+\]
+Theorem follows.
+
+\section*{Lecture 32 (01.06.2024)}
+
+\subsection*{Theorem 1}
+
+\begin{theorem}
+Let $P(x_0, y_0, z_0)$ be a solution of the constrained optimization problem
+\[
+f(x, y, z) \to \max (\min) \quad \text{subject to} \quad g(x, y, z) = 0,
+\]
+where the functions $f$ and $g$ are continuously differentiable in a domain $D \subset \mathbb{R}^3$ and $\nabla g(P) \neq 0$. Then there exists a Lagrange multiplier $\lambda$ such that $P$ is a critical point of the Lagrange function
+\[
+L(x, y, z, \lambda) = f(x, y, z) - \lambda g(x, y, z).
+\]
+\end{theorem}
+
+\vspace{1em}
+
+\textit{Proof.} Suppose that the function $f(x, y, z)$ has an extreme value at a point $P(x_0, y_0, z_0) \in S$, where $S$ is defined by the constraint $g(x, y, z) = 0$. Let $C \subset S$ be a curve with the vector function $r(t) = (x(t), y(t), z(t))$ that lies on $S$ and passes through $P$. Assume that $t_0$ is the parameter value corresponding to the point $r(t_0) = P$. The composite function $F(t) = f(x(t), y(t), z(t))$ represents the values that $f$ takes on the curve $C$. Since $f$ has an extremum value at $P$, the function $F(t)$ has an extreme value at $t_0$, so $F'(t_0) = 0$. If $f$ is differentiable, then
+\[
+F'(t_0) = \frac{\partial f}{\partial x}(P)x'(t_0) + \frac{\partial f}{\partial y}(P)y'(t_0) + \frac{\partial f}{\partial z}(P)z'(t_0) = 0,
+\]
+so that
+\[
+(\nabla f(P), r'(t_0)) = 0.
+\]
+This shows that the gradient vector $\nabla f(P)$ is orthogonal to the tangent vector $r'(t_0)$ to every such curve $C$. We also know that the gradient vector $\nabla g(P)$ is also orthogonal to every such curve. This means that the gradient vectors $\nabla f(P)$ and $\nabla g(P)$ must be parallel. Therefore, if $\nabla g(P) \neq 0$, there is a number $\lambda$ such that
+\[
+\nabla f(P) = \lambda \nabla g(P).
+\]
+
+Let us now remark that the condition $\nabla f(P) = \lambda \nabla g(P)$ can be rewritten as
+\[
+\frac{\partial f}{\partial x}(P) = \lambda \frac{\partial g}{\partial x}(P), \quad \frac{\partial f}{\partial y}(P) = \lambda \frac{\partial g}{\partial y}(P), \quad \frac{\partial f}{\partial z}(P) = \lambda \frac{\partial g}{\partial z}(P),
+\]
+or,
+\[
+\frac{\partial}{\partial x}(f - \lambda g)(P) = 0, \quad \frac{\partial}{\partial y}(f - \lambda g)(P) = 0, \quad \frac{\partial}{\partial z}(f - \lambda g)(P) = 0.
+\]
+
+So, if we introduce the Lagrange function
+\[
+L(x, y, z, \lambda) = f(x, y, z) - \lambda g(x, y, z),
+\]
+where $\lambda$ is called the Lagrange multiplier, the last set of relations can be written as a condition for $P$ to be a critical point of $L$:
+\[
+\frac{\partial L}{\partial x} = 0, \quad \frac{\partial L}{\partial y} = 0, \quad \frac{\partial L}{\partial z} = 0,
+\]
+together with the constraint
+\[
+\frac{\partial L}{\partial \lambda} = -g(x, y, z) = 0.
+\]
+
+Thus, we have proved the theorem. Kill me please.
+
+
+\end{document}
+
+
