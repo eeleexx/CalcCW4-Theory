@@ -3,6 +3,10 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 
+\author{eeleexx}
+
+\newtheorem{theorem}{Theorem}
+
 \title{We snortin' fart bubbles}
 
 \begin{document}
@@ -107,17 +111,18 @@ f(x, y) - f(x_0, y_0) = f'_x (x_0, y_0) \Delta x + f'_y (x_0, y_0) \Delta y + \v
 where $\varepsilon = \varepsilon (\Delta x, \Delta y) \to 0$ as $\Delta x, \Delta y \to 0$ and $\rho = \sqrt{(\Delta x)^2 + (\Delta y)^2}$.
 
 The last formula can be rewritten in the form
-\[
-f(x(t), y(t)) - f(x(t_0), y(t_0)) = f'_x (x_0, y_0) (x(t) - x(t_0)) + f'_y (x_0, y_0) (y(t) - y(t_0)) + \varepsilon \cdot \rho,
-\]
+\begin{align}
+    f(x(t), y(t)) - f(x(t_0), y(t_0)) &= f'_x (x_0, y_0) (x(t) - x(t_0)) \nonumber \\
+    &\quad + f'_y (x_0, y_0) (y(t) - y(t_0)) + \varepsilon \cdot \rho,
+    \end{align}
 \[
 F(t) - F(t_0) = f'_x (x_0, y_0) (x(t) - x(t_0)) + f'_y (x_0, y_0) (y(t) - y(t_0)) + \varepsilon \cdot \rho.
 \]
 Dividing by $\Delta t = t - t_0$, we have
-\[
-\frac{F(t) - F(t_0)}{
-\Delta t} = f'_x (x_0, y_0) \frac{x(t) - x(t_0)}{\Delta t} + f'_y (x_0, y_0) \frac{y(t) - y(t_0)}{\Delta t} + \varepsilon \cdot \sqrt{\left(\frac{\Delta x}{\Delta t}\right)^2 + \left(\frac{\Delta y}{\Delta t}\right)^2}.
-\]
+\begin{align}
+    \frac{F(t) - F(t_0)}{\Delta t} &= f'_x (x_0, y_0) \frac{x(t) - x(t_0)}{\Delta t} \nonumber \\
+    &\quad + f'_y (x_0, y_0) \frac{y(t) - y(t_0)}{\Delta t} + \varepsilon \cdot \sqrt{\left(\frac{\Delta x}{\Delta t}\right)^2 + \left(\frac{\Delta y}{\Delta t}\right)^2}.
+    \end{align}
 Taking the limit $\Delta t \to 0$, as $\Delta x, \Delta y \to 0$ while $\Delta t \to 0$, we get
 \[
 F'(t_0) = f'_x (x_0, y_0)x'(t_0) + f'_y (x_0, y_0)y'(t_0).
@@ -344,10 +349,15 @@ Part 1 of the theorem is proved.
 \[
 \varphi'(0) = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}(a)v_i = 0,
 \]
-as $a is a critical point. We obtain
-\[
-f(x) = f(a + v) = \varphi(1) = \varphi(0) + \varphi(1) - \varphi(0) = f(a) + \int_0^1 \varphi'(t) \, dt = f(a) + \int_0^1 (\varphi'(t) - \varphi'(0)) \, dt = f(a) + \int_0^1 \left( \int_0^t \varphi''(\tau) \, d\tau \right) \, dt = f(a) + \int_0^1 \left( \int_0^t Q_f(a + \tau v)[v] \, d\tau \right) \, dt \geq f(a).
-\]
+as $a$ is a critical point. We obtain
+\begin{equation}
+    \begin{split}
+    f(x) = & f(a + v) = \varphi(1) = \varphi(0) + \varphi(1) - \varphi(0) \\
+    = & f(a) + \int_0^1 \varphi'(t) \, dt = f(a) + \int_0^1 (\varphi'(t) - \varphi'(0)) \, dt \\
+    = & f(a) + \int_0^1 \left( \int_0^t \varphi''(\tau) \, d\tau \right) \, dt \geq f(a).
+    \end{split}
+\end{equation}
+
 Theorem follows.
 
 \section*{Lecture 32 (01.06.2024)}
